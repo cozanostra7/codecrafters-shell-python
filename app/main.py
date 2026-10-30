@@ -1,5 +1,5 @@
 import sys
-import shutil
+import shutil,subprocess, os
 
 
 def main():
@@ -20,7 +20,14 @@ def main():
             else:
                 print(f"{cmd}: not found")
         else:
-            print(f"{command}: command not found")
+            parts = command.split()
+            if not parts:
+                continue
+            prog, *args = parts
+            if shutil.which(prog):
+                subprocess.run([prog, *args])
+            else:
+                print(f"{command}: command not found")
 
         
 if __name__ == "__main__":
