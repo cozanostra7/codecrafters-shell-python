@@ -13,10 +13,12 @@ def main():
             print(command[5:])
         elif command.startswith("type "):
             cmd = command[5:]
-            if cmd in ["echo", "exit", "type"]:
+            if cmd in ["echo", "exit", "type", "pwd"]:
                 print(f"{cmd} is a shell builtin")
             elif path := shutil.which(cmd):
                 print(f"{cmd} is {path}")
+            elif command == "pwd" or command.startswith("pwd "):
+                print(os.getcwd())
             else:
                 print(f"{cmd}: not found")
         else:
