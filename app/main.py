@@ -11,7 +11,7 @@ def main():
                     break
         elif command[5:] in ["type", "echo", "exit"]:
             print(f"{command[5:]} is a shell builtin")
-        elif path:=shutil.which(command):
+        elif path := shutil.which(command):
              print(f"{command} is {path}")
         
         elif command.startswith('echo'):
