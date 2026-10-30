@@ -14,8 +14,9 @@ def main():
         elif command.startswith('echo'):
               print(command[5:])
 
+
         else:
-            print(f"{command}: command not found")
+            print(f"{command.strip('type')}: command not found")
 
         
 if __name__ == "__main__":
