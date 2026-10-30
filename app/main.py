@@ -17,10 +17,10 @@ def main():
                 print(f"{cmd} is a shell builtin")
             elif path := shutil.which(cmd):
                 print(f"{cmd} is {path}")
-            elif command == "pwd" or command.startswith("pwd "):
-                print(os.getcwd())
             else:
                 print(f"{cmd}: not found")
+        elif command == "pwd" or command.startswith("pwd "):
+                        print(os.getcwd())
         else:
             parts = command.split()
             if not parts:
