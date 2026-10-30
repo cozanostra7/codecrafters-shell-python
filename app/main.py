@@ -16,7 +16,7 @@ def main():
 
 
         else:
-            print(f"{command.strip('type')}:command not found")
+            print(f"{command.strip('type ')}: not found")
 
         
 if __name__ == "__main__":
