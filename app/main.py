@@ -7,19 +7,20 @@ def main():
         sys.stdout.write("$ ")
     
         command = input()
-        if command =='exit':
-                    break
-        elif command[5:] in ["type", "echo", "exit"]:
-            print(f"{command[5:]} is a shell builtin")
-        elif path := shutil.which(command):
-             print(f"{command} is {path}")
-        
-        elif command.startswith('echo'):
-              print(command[5:])
-
-
+        if command == "exit":
+            break
+        elif command.startswith("echo "):
+            print(command[5:])
+        elif command.startswith("type "):
+            cmd = command[5:]
+            if cmd in ["echo", "exit", "type"]:
+                print(f"{cmd} is a shell builtin")
+            elif path := shutil.which(cmd):
+                print(f"{cmd} is {path}")
+            else:
+                print(f"{cmd}: not found")
         else:
-            print(f"{command.strip('type ')}: not found")
+            print(f"{command}: command not found")
 
         
 if __name__ == "__main__":
